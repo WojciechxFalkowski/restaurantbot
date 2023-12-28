@@ -1,7 +1,7 @@
-# Gourmet Paradise Bot
+# Restaurantbot 
 
 ## Opis
-**Gourmet Paradise** to interaktywny asystent restauracji zaprojektowany, aby ułatwić komunikację z klientami. Bot odpowiada na pytania dotyczące menu, rekomenduje dania i napoje, informuje o cenach oraz czasie przygotowania, a także pomaga w rezerwacji stolików.
+**Restaurantbot** to interaktywny asystent restauracji zaprojektowany, aby ułatwić komunikację z klientami. Bot odpowiada na pytania dotyczące menu, rekomenduje dania i napoje, informuje o cenach oraz czasie przygotowania, a także pomaga w rezerwacji stolików.
 
 ## Funkcje
 - **Rekomendacje Menu:** Bot oferuje sugestie dotyczące dań i napojów na podstawie preferencji kuchni użytkownika.
