@@ -12,4 +12,5 @@
 
 ## Technologia
 Bot działa na zasadzie dopasowywania wzorców zapytań użytkownika do odpowiednich szablonów odpowiedzi, korzystając z danych z pliku `menu.maps`. Utrzymuje kontekst rozmowy za pomocą tagów `<that>` i `<topic>`, oferując spójną i angażującą interakcję.
-Kod źródłowy źródłowy znajduje się w `/files/udc.aiml`
+
+Kod źródłowy znajduje się w `/files/udc.aiml`
