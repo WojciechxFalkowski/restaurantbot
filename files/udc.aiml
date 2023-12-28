@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml>
+    <!-- Przywitanie -->
+    <category>
+        <pattern>HELLO</pattern>
+        <template>Welcome to Gourmet Paradise, the best place for exquisite dining! How can I assist you today?</template>
+    </category>
+    
+    <category>
+        <pattern>HI</pattern>
+        <template>Welcome to Gourmet Paradise, the best place for exquisite dining! How can I assist you today?</template>
+    </category>
+    
+    <category>
+        <pattern>HEY</pattern>
+        <template>Welcome to Gourmet Paradise, the best place for exquisite dining! How can I assist you today?</template>
+    </category>
+    
+    <category>
+        <pattern>GOOD MORNING</pattern>
+        <template>Good morning! Welcome to Gourmet Paradise, the best place for exquisite dining! How can I assist you today?</template>
+    </category>
+
+    <!-- Informacje o restauracji -->
+    <category>
+        <pattern>WHAT IS THE NAME OF THIS RESTAURANT</pattern>
+        <template>Gourmet Paradise is the name of our restaurant.</template>
+    </category>
+
+    <category>
+        <pattern>WHERE IS THIS RESTAURANT LOCATED</pattern>
+        <template>We are located at 123 Flavor Street, Foodville. Would you like directions?</template>
+    </category>
+
+    <!-- Rekomendacje dań -->
+    <category>
+        <pattern>WHAT DO YOU RECOMMEND FOR *</pattern>
+        <template>
+            <think><set var="cuisine"><star/></set></think>
+            Here are some dishes from our <get var="cuisine"/> cuisine:
+            <condition var="cuisine">
+                <li value="Italian">
+                    Risotto - <map name="menu">risotto ingredients</map> at <map name="menu">risotto price</map>,
+                    Neapolitan Pizza - <map name="menu">neapolitan pizza ingredients</map> at <map name="menu">neapolitan pizza price</map>,
+                    Caprese Salad - <map name="menu">caprese salad ingredients</map> at <map name="menu">caprese salad price</map>.
+                </li>
+                <li value="French">
+                    Coq au Vin - <map name="menu">coq au vin ingredients</map> at <map name="menu">coq au vin price</map>,
+                    Bouillabaisse - <map name="menu">bouillabaisse ingredients</map> at <map name="menu">bouillabaisse price</map>,
+                    Ratatouille - <map name="menu">ratatouille ingredients</map> at <map name="menu">ratatouille price</map>.
+                </li>
+                <li value="American">
+                    Burgers - <map name="menu">burgers ingredients</map> at <map name="menu">burgers price</map>,
+                    BBQ Ribs - <map name="menu">bbq ribs ingredients</map> at <map name="menu">bbq ribs price</map>,
+                    Fried Chicken - <map name="menu">fried chicken ingredients</map> at <map name="menu">fried chicken price</map>.
+                </li>
+                <li>I'm sorry, I don't have information about <get var="cuisine"/> cuisine right now. Would you like to know about another type of cuisine?</li>
+            </condition>
+            If you'd like to know more about any specific dish, just ask!
+        </template>
+    </category>
+
+    <!-- Informacje o składnikach konkretnych dań -->
+    <category>
+        <pattern>WHAT IS IN *</pattern>
+        <template>
+            <think><set var="menu"><star/></set></think>
+            Let's see, the ingredients in <get var="menu"/> are <map name="menu"><get var="menu"/> ingredients</map>. If you need more details, just ask!
+        </template>
+    </category>
+    
+    <category>
+        <pattern>WHAT IS THE PRICE OF *</pattern>
+        <template>
+            <think><set var="menu"><star/></set></think>
+            Let's see, the price of <get var="menu"/> is <map name="menu"><get var="menu"/> price</map>. If you need more details, just ask!
+        </template>
+    </category>
+
+    <category>
+        <pattern>TELL ME ABOUT *</pattern>
+        <template>
+            <think><set var="menu"><star/></set></think>
+            You asked about <get var="menu"/>. Here is what I found:
+            Price: <map name="menu"><get var="menu"/> price</map>,
+            Origin: <map name="menu"><get var="menu"/> origin</map>,
+            Ingredients: <map name="menu"><get var="menu"/> ingredients</map>.
+        </template>
+    </category>
+
+    <!-- Czas przygotowania -->
+    <category>
+        <pattern>HOW LONG DOES IT TAKE TO PREPARE *</pattern>
+        <template>
+            <think><set var="menu"><star/></set></think>
+            You asked about <get var="menu"/>. 
+            It usually takes <map name="menu"><get var="menu"/> time</map> to prepare <get var="menu"/>. Would you like to order it?
+        </template>
+    </category>
+
+    <!-- Dostępność stolików -->
+    <category>
+        <pattern>DO YOU HAVE OUTDOOR SEATING</pattern>
+        <template>
+            <random>
+                <li>Yes, we do have outdoor seating. Would you like to reserve a table outside?</li>
+                <li>Indeed, our outdoor seating is quite popular. Would you like to reserve a table outside?</li>
+                <li>Definitely, our garden area is available. Would you like to reserve a table outside?</li>
+                <li>Of course, we have a lovely patio area. Would you like to reserve a table outside?</li>
+            </random>
+        </template>
+    </category>
+    
+    <!-- Dostępność stolików -> <that> kontekstowa odpowiedz -->
+    <category>
+        <pattern>YES PLEASE</pattern>
+        <that>WOULD YOU LIKE TO RESERVE A TABLE OUTSIDE</that>
+        <template>Perfect! I've reserved an outdoor table for you. How many people will be joining?</template>
+    </category>
+    
+    <!-- Dostępność stolików -> <that> kontekstowa odpowiedz -->
+    <category>
+        <pattern>*</pattern>
+        <that>HOW MANY PEOPLE WILL BE JOINING</that>
+        <template>
+            <think><set var="peopleCount"><star/></set></think>
+            Great, a table for <get var="peopleCount"/> will be ready for you.
+        </template>
+    </category>
+
+    <!-- Rekomendacje do picia -->
+    <category>
+        <pattern>WHAT DO YOU RECOMMEND FOR DRINKS</pattern>
+        <template>
+            Here are some drinks I recommend:
+            Coffee - <map name="menu">coffee ingredients</map>,
+            Espresso - <map name="menu">espresso ingredients</map>,
+            Latte - <map name="menu">latte ingredients</map>,
+            Cappuccino - <map name="menu">cappuccino ingredients</map>,
+            Tea - <map name="menu">tea ingredients</map>.
+            Let me know if you want more information about any specific drink!
+        </template>
+    </category>
+
+    <!-- Koszt dania / napoju -->
+    <category>
+        <pattern>HOW MUCH DOES * COST</pattern>
+        <template>
+            <think><set var="item"><star/></set></think>
+            The price of <get var="item"/> is <map name="menu"><get var="item"/> price</map>.
+        </template>
+    </category>
+
+    <!-- Polityka dotycząca palenia -->
+    <category>
+        <pattern>CAN I SMOKE INSIDE</pattern>
+        <template>I'm sorry, but smoking is not allowed inside the restaurant. We do have a designated smoking area outside.</template>
+    </category>
+
+    <!-- Menu -->
+    <category>
+        <pattern>I WANT TO TALK ABOUT THE MENU</pattern>
+        <template>
+            Sure, I can tell you all about our dishes. What would you like to know? You can ask about our specials, drink options, or specific dishes.
+            <think><set name="topic">menu</set></think>
+        </template>
+    </category>
+
+    <category>
+        <pattern>TELL ME ABOUT THE SPECIALS</pattern>
+        <topic>menu</topic>
+        <template>
+            <think><set var="specials"><map name="menu"> specials</map></set></think>
+            Today's specials include <get var="specials"/>. Would you like to know more about any of these dishes?
+        </template>
+    </category>
+
+
+    <!-- Alergie -->
+    <category>
+        <pattern>I AM ALLERGIC TO NUTS</pattern>
+        <template><think><set name="allergy">nuts</set></think>I've noted your allergy. I'll make sure to inform the kitchen.</template>
+    </category>
+
+    <!-- Alergie -> condition -->
+    <category>
+        <pattern>IS THERE ANYTHING I SHOULD AVOID</pattern>
+        <template>
+            <condition name="allergy">
+                <li value="nuts">You should avoid dishes with nuts.</li>
+                <li>I don't have any particular recommendations.</li>
+            </condition>
+        </template>
+    </category>
+
+    <!-- Użycie <random> dla różnorodności odpowiedzi -->
+    <category>
+        <pattern>HOW IS THE FOOD HERE</pattern>
+        <template>
+            <random>
+                <li>Our guests love it! We're known for our fresh ingredients and innovative dishes.</li>
+                <li>It's delicious! Our chefs are highly skilled and passionate about every dish they make.</li>
+                <li>Excellent! We've received numerous awards for our cuisine and service.</li>
+            </random>
+        </template>
+    </category>
+
+    <!-- Proces zamawiania -->
+    <category>
+        <pattern>I WOULD LIKE TO ORDER *</pattern>
+        <template>
+            <think>
+                <set var="dish"><star/></set>
+                <set var="total"><map name="menu"><get var="dish"/> price</map></set>
+            </think>
+            Great choice! <get var="dish"/> will be ready in about <map name="menu"><get var="dish"/> time</map>. 
+            Your total so far is <get var="total"/>.
+        </template>
+    </category>
+
+    <!-- Zapłata i promocja -->
+    <category>
+        <pattern>I AM READY TO PAY</pattern>
+        <template>Your total is $<get name="total"/>. How would you like to pay? Also, if you leave a review on Google Maps, you'll get a complimentary vanilla ice cream!</template>
+    </category>
+
+    <!-- Dodatkowe informacje -->
+    <category>
+        <pattern>TELL ME MORE ABOUT THE RESTAURANT</pattern>
+        <template>Gourmet Paradise has been serving delicious meals for over a decade. We pride ourselves on using fresh, local ingredients and providing a cozy atmosphere. Our chefs are renowned for their creative dishes and exceptional skills.</template>
+    </category>
+
+    <!-- Pożegnanie -->
+    <category>
+        <pattern>GOODBYE</pattern>
+        <template>
+            <random>
+                <li>Thank you for visiting Gourmet Paradise. We hope to see you again soon!</li>
+                <li>It was a pleasure serving you. Have a great day!</li>
+                <li>Goodbye! Come back anytime for more delicious experiences.</li>
+                <li>Farewell! Don't forget to visit us again for your next meal.</li>
+                <li>Thank you for dining with us. We look forward to your next visit!</li>
+            </random>
+        </template>
+    </category>
+    
+    <category>
+        <pattern>BYE BYE</pattern>
+        <template>
+            <random>
+                <li>Thank you for visiting Gourmet Paradise. We hope to see you again soon!</li>
+                <li>It was a pleasure serving you. Have a great day!</li>
+                <li>Goodbye! Come back anytime for more delicious experiences.</li>
+                <li>Farewell! Don't forget to visit us again for your next meal.</li>
+                <li>Thank you for dining with us. We look forward to your next visit!</li>
+            </random>
+        </template>
+    </category>
+</aiml>
+
+
